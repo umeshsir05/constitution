@@ -1,0 +1,323 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+:root {
+    --bg: #f8fafc;
+    --card-bg: #ffffff;
+    --text: #0f172a;
+    --subtext: #334155;
+    --border: #e2e8f0;
+    --accent: #1e4b6b;
+    --accent-light: #2c6e9c;
+    --shadow: 0 8px 20px rgba(0,0,0,0.04), 0 2px 6px rgba(0,0,0,0.02);
+    --header-bg: #ffffff;
+    --ans-bg: #eef6ff;
+    --ans-text: #075985;
+    --btn-bg: #f1f5f9;
+    --btn-text: #1e293b;
+    --search-bg: #f1f5f9;
+    --icon-color: #0f172a;
+}
+
+body.dark {
+    --bg: #0b1219;
+    --card-bg: #141e2b;
+    --text: #e2e8f0;
+    --subtext: #b0c4de;
+    --border: #2a3a4c;
+    --accent: #5fa3d1;
+    --accent-light: #7bb8e0;
+    --shadow: 0 8px 20px rgba(0,0,0,0.5);
+    --header-bg: #0f1a24;
+    --ans-bg: #1e2d3c;
+    --ans-text: #b3d9ff;
+    --btn-bg: #1e2d3c;
+    --btn-text: #cbd5e1;
+    --search-bg: #1e2d3c;
+    --icon-color: #e2e8f0;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    padding: 0 12px 40px;
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+/* Header */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    position: sticky;
+    top: 0;
+    background-color: var(--header-bg);
+    z-index: 20;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 16px;
+    backdrop-filter: blur(6px);
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo span {
+    background: var(--accent);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+}
+
+.menu-icon {
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--icon-color);
+    user-select: none;
+    line-height: 1;
+    padding: 0 6px;
+}
+
+.search-wrapper {
+    flex: 1 1 200px;
+    display: flex;
+    justify-content: flex-end;
+    min-width: 180px;
+}
+
+.search-wrapper input {
+    width: 100%;
+    max-width: 280px;
+    padding: 10px 16px;
+    border-radius: 40px;
+    border: 1px solid var(--border);
+    background: var(--search-bg);
+    color: var(--text);
+    font-size: 1rem;
+    outline: none;
+}
+
+.search-wrapper input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(30,75,107,0.2);
+}
+
+/* Navigation Drawer */
+.nav-drawer {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    width: 260px;
+    height: 100vh;
+    background: var(--card-bg);
+    box-shadow: 4px 0 20px rgba(0,0,0,0.2);
+    z-index: 50;
+    padding: 24px 16px;
+    transition: left 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+}
+
+.nav-drawer.open {
+    left: 0;
+}
+
+.nav-drawer .close-btn {
+    align-self: flex-end;
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 4px 12px;
+    color: var(--text);
+    margin-bottom: 12px;
+}
+
+.nav-drawer a, .nav-drawer .drawer-item {
+    text-decoration: none;
+    color: var(--text);
+    padding: 12px 16px;
+    border-radius: 12px;
+    background: var(--btn-bg);
+    font-weight: 500;
+    display: block;
+    transition: background 0.2s;
+}
+
+.nav-drawer .drawer-item {
+    cursor: pointer;
+}
+
+.nav-drawer a:hover, .nav-drawer .drawer-item:hover {
+    background: var(--accent);
+    color: white;
+}
+
+.nav-drawer .theme-toggle {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--btn-bg);
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: 40;
+    display: none;
+}
+
+.overlay.active {
+    display: block;
+}
+
+/* Main Container & Cards */
+.container {
+    max-width: 820px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: 24px;
+    padding: 20px 18px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    transition: 0.15s;
+}
+
+.question {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    color: var(--text);
+    display: flex;
+    gap: 8px;
+}
+
+.q-num {
+    color: var(--accent);
+    font-weight: 700;
+    min-width: 28px;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 12px 0 8px 30px;
+    color: var(--subtext);
+    font-size: 0.98rem;
+}
+
+.option {
+    padding: 6px 12px;
+    background: var(--btn-bg);
+    border-radius: 30px;
+    display: inline-block;
+    width: fit-content;
+    border: 1px solid transparent;
+}
+
+.answer-box {
+    margin-top: 14px;
+    margin-left: 30px;
+    background: var(--ans-bg);
+    padding: 10px 16px;
+    border-radius: 40px;
+    color: var(--ans-text);
+    font-weight: 600;
+    display: inline-block;
+    border-left: 5px solid var(--accent);
+    font-size: 0.95rem;
+}
+
+.no-results {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--subtext);
+    font-size: 1.2rem;
+}
+
+/* Highlighting */
+.highlight {
+    background: #fde047;
+    color: #0f172a;
+    border-radius: 4px;
+    padding: 0 2px;
+}
+
+body.dark .highlight {
+    background: #b45309;
+    color: #f8fafc;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .header {
+        padding: 10px 0;
+    }
+    .logo {
+        font-size: 1.1rem;
+    }
+    .logo span {
+        font-size: 0.7rem;
+    }
+    .search-wrapper input {
+        font-size: 0.9rem;
+        padding: 8px 14px;
+        max-width: 150px;
+    }
+    .question {
+        font-size: 1rem;
+    }
+    .options {
+        margin-left: 20px;
+        font-size: 0.9rem;
+    }
+    .answer-box {
+        margin-left: 20px;
+        font-size: 0.9rem;
+        padding: 8px 14px;
+    }
+    .card {
+        padding: 16px 14px;
+    }
+}
+
+@media (max-width: 380px) {
+    .search-wrapper input {
+        max-width: 110px;
+    }
+    .options {
+        margin-left: 10px;
+    }
+    .answer-box {
+        margin-left: 10px;
+    }
+}
