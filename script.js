@@ -1878,6 +1878,9 @@ if (savedTheme === 'dark') {
 }
 
 window.toggleDarkMode = toggleDarkMode;
+// Window assignments me add karein:
+window.scrollToTop = scrollToTop;
+window.scrollToBottom = scrollToBottom; // 👈 Yeh line jod dein
 
 // close drawer on Escape key
 document.addEventListener('keydown', (e) => {
