@@ -11,16 +11,22 @@
     <div class="overlay" id="overlay"></div>
 
     <!-- Navigation Drawer -->
-    <div class="nav-drawer" id="navDrawer">
-        <div class="close-btn" id="closeDrawer">✕</div>
-        <a href="#" onclick="closeDrawerAndScroll(); return false;">🏠 होम</a>
-        <div class="drawer-item" onclick="toggleDarkMode(); closeDrawer();">🌙 डार्क मोड</div>
-        <div class="drawer-item" onclick="scrollToTop(); closeDrawer();">⬆️ ऊपर जाएँ</div>
-        <a href="#" onclick="closeDrawer(); return false;">📘 सभी प्रश्न</a>
-        <div style="margin-top: auto; font-size: 0.8rem; color: var(--subtext); padding: 16px 0;">
-            कुल <span id="totalCount"></span> प्रश्न
-        </div>
+    <!-- index.html me is jagah add karein -->
+<div class="nav-drawer" id="navDrawer">
+    <div class="close-btn" id="closeDrawer">✕</div>
+    <a href="#" onclick="closeDrawerAndScroll(); return false;">🏠 Home</a>
+    <div class="drawer-item" onclick="toggleDarkMode(); closeDrawer();">🌙 Dark Mode</div>
+    <div class="drawer-item" onclick="scrollToTop(); closeDrawer();">⬆️ Upar Jayein</div>
+    
+    <!-- 👇 YEH NAYA CODE ADD KAREIN 👇 -->
+    <div class="drawer-item" onclick="scrollToBottom(); closeDrawer();">⬇️ Neeche Jayein</div>
+    
+    <a href="#" onclick="closeDrawer(); return false;">📘 Sabhi Prashn</a>
+    <div style="margin-top: auto; font-size: 0.8rem; color: var(--subtext); padding: 16px 0;">
+        Kul <span id="totalCount"></span> Prashn
     </div>
+</div>
+
 
     <!-- Header -->
     <header class="header">
